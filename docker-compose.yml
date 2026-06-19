@@ -1,0 +1,33 @@
+version: '3.8'
+
+services:
+  postgres_db:
+    image: postgres:16-alpine
+    container_name: postgres_db
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: discord
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+
+  nestjs_app:
+    build: .
+    container_name: nestjs_app
+    ports:
+      - "3000:3000"
+    environment:
+      DB_HOST: postgres_db
+      DB_PORT: 5432
+      DB_USERNAME: postgres
+      DB_PASSWORD: postgres
+      DB_NAME: discord
+      JWT_SECRET: secretKey
+      PORT: 3000
+    depends_on:
+      - postgres_db
+
+volumes:
+  postgres_data:
