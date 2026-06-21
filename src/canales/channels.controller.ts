@@ -2,6 +2,7 @@ import {
   Controller,
   Get,
   Post,
+  Patch,
   Delete,
   Param,
   Body,
@@ -11,16 +12,17 @@ import {
 } from '@nestjs/common';
 import { ChannelsService } from './channels.service';
 import { CreateChannelDto } from './dto/create-channel.dto';
+import { UpdateChannelDto } from './dto/update-channel.dto';
 import { AuthGuard } from '../auth/guards/auth.guard';
 import { CurrentUser } from '../auth/decorators/current-user.decorator';
 import { ApiTags, ApiBearerAuth, ApiOperation } from '@nestjs/swagger';
 
-@ApiTags('channels')
+@ApiTags('canales')
 @Controller()
 export class ChannelsController {
   constructor(private readonly channelsService: ChannelsService) {}
 
-  @Post('servers/:serverId/channels')
+  @Post('servidores/:serverId/canales')
   @UseGuards(AuthGuard)
   @ApiBearerAuth()
   @HttpCode(HttpStatus.CREATED)
@@ -33,13 +35,31 @@ export class ChannelsController {
     return this.channelsService.create(+serverId, dto, user.sub);
   }
 
-  @Get('servers/:serverId/channels')
+  @Get('servidores/:serverId/canales')
   @ApiOperation({ summary: 'Obtener canales de un servidor' })
   findByServer(@Param('serverId') serverId: string) {
     return this.channelsService.findByServer(+serverId);
   }
 
-  @Delete('channels/:id')
+  @Get('canales/:id')
+  @ApiOperation({ summary: 'Obtener un canal por id' })
+  findOne(@Param('id') id: string) {
+    return this.channelsService.findOne(+id);
+  }
+
+  @Patch('canales/:id')
+  @UseGuards(AuthGuard)
+  @ApiBearerAuth()
+  @ApiOperation({ summary: 'Actualizar un canal (solo propietario del servidor)' })
+  update(
+    @Param('id') id: string,
+    @Body() dto: UpdateChannelDto,
+    @CurrentUser() user: any,
+  ) {
+    return this.channelsService.update(+id, dto, user.sub);
+  }
+
+  @Delete('canales/:id')
   @UseGuards(AuthGuard)
   @ApiBearerAuth()
   @HttpCode(HttpStatus.NO_CONTENT)

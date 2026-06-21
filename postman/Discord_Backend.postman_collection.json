@@ -96,12 +96,12 @@
             "method": "GET",
             "header": [],
             "url": {
-              "raw": "{{base_url}}/users",
+              "raw": "{{base_url}}/usuarios",
               "host": [
                 "{{base_url}}"
               ],
               "path": [
-                "users"
+                "usuarios"
               ]
             }
           },
@@ -123,17 +123,105 @@
             "method": "GET",
             "header": [],
             "url": {
-              "raw": "{{base_url}}/users/1",
+              "raw": "{{base_url}}/usuarios/1",
               "host": [
                 "{{base_url}}"
               ],
               "path": [
-                "users",
+                "usuarios",
                 "1"
               ]
             }
           },
           "response": []
+        },
+        {
+          "name": "Crear Usuario",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"nombre\": \"Nuevo\",\n  \"email\": \"nuevo@example.com\",\n  \"password\": \"123456\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{base_url}}/usuarios",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "usuarios"
+              ]
+            }
+          }
+        },
+        {
+          "name": "Actualizar Usuario",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{token}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "PATCH",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"nombre\": \"Usuario Modificado\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{base_url}}/usuarios/1",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "usuarios",
+                "1"
+              ]
+            }
+          }
+        },
+        {
+          "name": "Eliminar Usuario",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{token}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "DELETE",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/usuarios/1",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "usuarios",
+                "1"
+              ]
+            }
+          }
         }
       ]
     },
@@ -179,12 +267,12 @@
               }
             },
             "url": {
-              "raw": "{{base_url}}/servers",
+              "raw": "{{base_url}}/servidores",
               "host": [
                 "{{base_url}}"
               ],
               "path": [
-                "servers"
+                "servidores"
               ]
             }
           },
@@ -196,12 +284,12 @@
             "method": "GET",
             "header": [],
             "url": {
-              "raw": "{{base_url}}/servers",
+              "raw": "{{base_url}}/servidores",
               "host": [
                 "{{base_url}}"
               ],
               "path": [
-                "servers"
+                "servidores"
               ]
             }
           },
@@ -213,12 +301,12 @@
             "method": "GET",
             "header": [],
             "url": {
-              "raw": "{{base_url}}/servers/{{server_id}}",
+              "raw": "{{base_url}}/servidores/{{server_id}}",
               "host": [
                 "{{base_url}}"
               ],
               "path": [
-                "servers",
+                "servidores",
                 "{{server_id}}"
               ]
             }
@@ -250,12 +338,12 @@
               }
             },
             "url": {
-              "raw": "{{base_url}}/servers/{{server_id}}",
+              "raw": "{{base_url}}/servidores/{{server_id}}",
               "host": [
                 "{{base_url}}"
               ],
               "path": [
-                "servers",
+                "servidores",
                 "{{server_id}}"
               ]
             }
@@ -278,12 +366,12 @@
             "method": "DELETE",
             "header": [],
             "url": {
-              "raw": "{{base_url}}/servers/{{server_id}}",
+              "raw": "{{base_url}}/servidores/{{server_id}}",
               "host": [
                 "{{base_url}}"
               ],
               "path": [
-                "servers",
+                "servidores",
                 "{{server_id}}"
               ]
             }
@@ -334,14 +422,14 @@
               }
             },
             "url": {
-              "raw": "{{base_url}}/servers/{{server_id}}/channels",
+              "raw": "{{base_url}}/servidores/{{server_id}}/canales",
               "host": [
                 "{{base_url}}"
               ],
               "path": [
-                "servers",
+                "servidores",
                 "{{server_id}}",
-                "channels"
+                "canales"
               ]
             }
           },
@@ -353,14 +441,14 @@
             "method": "GET",
             "header": [],
             "url": {
-              "raw": "{{base_url}}/servers/{{server_id}}/channels",
+              "raw": "{{base_url}}/servidores/{{server_id}}/canales",
               "host": [
                 "{{base_url}}"
               ],
               "path": [
-                "servers",
+                "servidores",
                 "{{server_id}}",
-                "channels"
+                "canales"
               ]
             }
           },
@@ -382,17 +470,70 @@
             "method": "DELETE",
             "header": [],
             "url": {
-              "raw": "{{base_url}}/channels/{{channel_id}}",
+              "raw": "{{base_url}}/canales/{{channel_id}}",
               "host": [
                 "{{base_url}}"
               ],
               "path": [
-                "channels",
+                "canales",
                 "{{channel_id}}"
               ]
             }
           },
           "response": []
+        },
+        {
+          "name": "Obtener Canal por ID",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/canales/{{channel_id}}",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "canales",
+                "{{channel_id}}"
+              ]
+            }
+          }
+        },
+        {
+          "name": "Actualizar Canal",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{token}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "PATCH",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"nombre\": \"general-modificado\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{base_url}}/canales/{{channel_id}}",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "canales",
+                "{{channel_id}}"
+              ]
+            }
+          }
         }
       ]
     },
@@ -424,12 +565,12 @@
               }
             },
             "url": {
-              "raw": "{{base_url}}/channels/{{channel_id}}/messages",
+              "raw": "{{base_url}}/canales/{{channel_id}}/messages",
               "host": [
                 "{{base_url}}"
               ],
               "path": [
-                "channels",
+                "canales",
                 "{{channel_id}}",
                 "messages"
               ]
@@ -453,12 +594,12 @@
             "method": "GET",
             "header": [],
             "url": {
-              "raw": "{{base_url}}/channels/{{channel_id}}/messages",
+              "raw": "{{base_url}}/canales/{{channel_id}}/messages",
               "host": [
                 "{{base_url}}"
               ],
               "path": [
-                "channels",
+                "canales",
                 "{{channel_id}}",
                 "messages"
               ]

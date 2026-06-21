@@ -5,8 +5,8 @@ import {
   CreateDateColumn,
   ManyToOne,
 } from 'typeorm';
-import { User } from '../users/user.entity';
-import { Channel } from '../channels/channel.entity';
+import { User } from '../usuarios/user.entity';
+import { Channel } from '../canales/channel.entity';
 
 @Entity('messages')
 export class Message {

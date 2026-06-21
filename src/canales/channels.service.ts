@@ -7,7 +7,8 @@ import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
 import { Channel } from './channel.entity';
 import { CreateChannelDto } from './dto/create-channel.dto';
-import { ServersService } from '../servers/servers.service';
+import { UpdateChannelDto } from './dto/update-channel.dto';
+import { ServersService } from '../servidores/servers.service';
 
 @Injectable()
 export class ChannelsService {
@@ -55,6 +56,20 @@ export class ChannelsService {
       throw new NotFoundException(`Canal con id ${id} no encontrado`);
     }
     return channel;
+  }
+
+  async update(id: number, dto: UpdateChannelDto, userId: number): Promise<Channel> {
+    const channel = await this.findOne(id);
+    if (!channel.server || channel.server.owner.id !== userId) {
+      throw new ForbiddenException(
+        'Solo el propietario del servidor puede actualizar canales',
+      );
+    }
+    await this.channelsRepository.update(id, {
+      nombre: dto.nombre ?? channel.nombre,
+      tipo: dto.tipo ?? channel.tipo,
+    });
+    return this.findOne(id);
   }
 
   async remove(id: number, userId: number): Promise<void> {

@@ -3,7 +3,7 @@ import { TypeOrmModule } from '@nestjs/typeorm';
 import { Channel } from './channel.entity';
 import { ChannelsService } from './channels.service';
 import { ChannelsController } from './channels.controller';
-import { ServersModule } from '../servers/servers.module';
+import { ServersModule } from '../servidores/servers.module';
 import { AuthModule } from '../auth/auth.module';
 
 @Module({

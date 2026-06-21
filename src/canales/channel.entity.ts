@@ -6,7 +6,7 @@ import {
   ManyToOne,
   OneToMany,
 } from 'typeorm';
-import { Server } from '../servers/server.entity';
+import { Server } from '../servidores/server.entity';
 import { Message } from '../messages/message.entity';
 
 @Entity('channels')

@@ -6,8 +6,8 @@ import {
   ManyToOne,
   OneToMany,
 } from 'typeorm';
-import { User } from '../users/user.entity';
-import { Channel } from '../channels/channel.entity';
+import { User } from '../usuarios/user.entity';
+import { Channel } from '../canales/channel.entity';
 
 @Entity('servers')
 export class Server {

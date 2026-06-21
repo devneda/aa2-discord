@@ -3,8 +3,8 @@ import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
 import { Message } from './message.entity';
 import { CreateMessageDto } from './dto/create-message.dto';
-import { ChannelsService } from '../channels/channels.service';
-import { UsersService } from '../users/users.service';
+import { ChannelsService } from '../canales/channels.service';
+import { UsersService } from '../usuarios/users.service';
 
 @Injectable()
 export class MessagesService {

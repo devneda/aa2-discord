@@ -1,13 +1,13 @@
 import { Module } from '@nestjs/common';
 import { TypeOrmModule } from '@nestjs/typeorm';
-import { UsersModule } from './users/users.module';
+import { UsersModule } from './usuarios/users.module';
 import { AuthModule } from './auth/auth.module';
-import { ServersModule } from './servers/servers.module';
-import { ChannelsModule } from './channels/channels.module';
+import { ServersModule } from './servidores/servers.module';
+import { ChannelsModule } from './canales/channels.module';
 import { MessagesModule } from './messages/messages.module';
-import { User } from './users/user.entity';
-import { Server } from './servers/server.entity';
-import { Channel } from './channels/channel.entity';
+import { User } from './usuarios/user.entity';
+import { Server } from './servidores/server.entity';
+import { Channel } from './canales/channel.entity';
 import { Message } from './messages/message.entity';
 
 @Module({

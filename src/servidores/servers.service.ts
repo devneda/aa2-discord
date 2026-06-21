@@ -8,7 +8,7 @@ import { Repository } from 'typeorm';
 import { Server } from './server.entity';
 import { CreateServerDto } from './dto/create-server.dto';
 import { UpdateServerDto } from './dto/update-server.dto';
-import { UsersService } from '../users/users.service';
+import { UsersService } from '../usuarios/users.service';
 
 @Injectable()
 export class ServersService {

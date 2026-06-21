@@ -59,4 +59,15 @@ export class UsersService {
       throw new InternalServerErrorException('Error al crear el usuario');
     }
   }
+
+  async update(id: number, data: Partial<User>): Promise<User> {
+    const user = await this.findOne(id);
+    await this.usersRepository.update(id, data);
+    return this.findOne(id);
+  }
+
+  async remove(id: number): Promise<void> {
+    const user = await this.findOne(id);
+    await this.usersRepository.delete(id);
+  }
 }

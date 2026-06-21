@@ -14,7 +14,7 @@ import { MessagesGateway } from './messages.gateway';
 import { ApiTags, ApiBearerAuth, ApiOperation } from '@nestjs/swagger';
 
 @ApiTags('messages')
-@Controller('channels/:channelId/messages')
+@Controller('canales/:channelId/messages')
 @UseGuards(AuthGuard)
 @ApiBearerAuth()
 export class MessagesController {

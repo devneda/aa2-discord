@@ -17,8 +17,8 @@ import { AuthGuard } from '../auth/guards/auth.guard';
 import { CurrentUser } from '../auth/decorators/current-user.decorator';
 import { ApiTags, ApiBearerAuth, ApiOperation } from '@nestjs/swagger';
 
-@ApiTags('servers')
-@Controller('servers')
+@ApiTags('servidores')
+@Controller('servidores')
 export class ServersController {
   constructor(private readonly serversService: ServersService) {}
 

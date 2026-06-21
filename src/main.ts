@@ -17,7 +17,7 @@ async function bootstrap() {
 
   const config = new DocumentBuilder()
     .setTitle('Discord Backend API')
-    .setDescription('API del clon de Discord para la 2ª evaluación de PSP')
+    .setDescription('API Discord para la 2ª evaluación de PSP')
     .setVersion('1.0')
     .addBearerAuth()
     .build();
